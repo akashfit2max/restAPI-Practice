@@ -45,7 +45,7 @@ public class BooksController {
 		if (allBooks.size() <= 0) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.of(Optional.of(allBooks));
+		return ResponseEntity.status(HttpStatus.CREATED).body(allBooks);
 	}
 
 //	get a single book handler
@@ -71,7 +71,7 @@ public class BooksController {
 		try {
 			b = bookService.addBook(book);
 			System.out.println(b);
-			return ResponseEntity.of(Optional.of(b));
+			return ResponseEntity.status(HttpStatus.CREATED).body(b);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
