@@ -1,10 +1,15 @@
 package com.spring.rest.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "books")
@@ -14,9 +19,12 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String title;
-	private String author;
 
-	public Book(int id, String title, String author) {
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private Author author;
+
+	public Book(int id, String title, Author author) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -44,11 +52,11 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 

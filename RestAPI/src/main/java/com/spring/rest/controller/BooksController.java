@@ -26,11 +26,11 @@ public class BooksController {
 
 //	@RequestMapping(value = "/books", method = RequestMethod.GET)
 //	@ResponseBody
-	@GetMapping("/books")
-	public Book getBooks() {
-		Book book = new Book(1, "java programming", "Akash");
-		return book;
-	}
+//	@GetMapping("/books")
+//	public Book getBooks() {
+//		Book book = new Book(1, "java programming", "Akash");
+//		return book;
+//	}
 
 //	get all books handler
 //	@GetMapping("/allbooks")
