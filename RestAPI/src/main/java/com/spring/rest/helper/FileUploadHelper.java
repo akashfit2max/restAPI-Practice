@@ -1,17 +1,25 @@
 package com.spring.rest.helper;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileUploadHelper {
 
-	public final String UPLOAD_DIR = "C:\\Users\\akash\\git\\restAPI-Practice\\RestAPI\\src\\main\\resources\\static\\image";
+//	public final String UPLOAD_DIR = "C:\\Users\\akash\\git\\restAPI-Practice\\RestAPI\\src\\main\\resources\\static\\image";
+	public final String UPLOAD_DIR = new ClassPathResource("static/image").getFile().getAbsolutePath();
+
+	public FileUploadHelper() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public boolean fileUpload(MultipartFile multipartFile) {
 		boolean f = false;
